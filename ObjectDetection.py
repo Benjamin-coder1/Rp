@@ -85,17 +85,19 @@ def detect_obstacle() :
  
         # Get data from camera 
         GetFrameset.join()   
+        deb = time.time()
         color_frame, depth_frame = [frameset.get_color_frame(), align.process(frameset).get_depth_frame()]
-        
+        print(" + " + str(1000*(time.time() - deb)) )
+
         ## Get framset 
         GetFrameset = threading.Thread(target=getFramset, args=(pipe,) )
         GetFrameset.start()
 
         # Point cloud computation 
-        GetPointCloud = threading.Thread(target=getPointCloud, args=(depth_frame,) )
-        GetPointCloud.start()
+        getPointCloud(depth_frame)
 
         # Image processing  
+        deb = time.time()
         color = np.asanyarray(color_frame.get_data())
         height, width = color.shape[:2]        
         aspect = width / height
@@ -105,9 +107,9 @@ def detect_obstacle() :
         blob = cv2.dnn.blobFromImage(crop_img, inScaleFactor, (expected, expected), meanVal, False)
         net.setInput(blob, "data")
         detections = net.forward("detection_out")
+        print(" - " + str(1000*(time.time() - deb)) )
         
-        # Joining both 
-        GetPointCloud.join()
+        
 
         # Nb of detected object and saving 
         boudingList = []
@@ -181,19 +183,19 @@ def detect_obstacle() :
             nbObjct += 1
         
         # Saving of frames 
-        pickle.dump( boudingList, fileResult)
-        pickle.dump( verts, filePointCloud)
-        pickle.dump( color, fileColor)
+        # pickle.dump( boudingList, fileResult)
+        # pickle.dump( verts, filePointCloud)
+        # pickle.dump( color, fileColor)
          
         # Compute frequency 
         timeList.append( time.time() - t1)
         if len(timeList) > 2 : 
             frequency = round(1/np.mean(timeList[max(0,len(timeList)  - 15):len(timeList) - 1 ]),1)
- 
+            print(str(frequency) + " Hz")
         # diplay image 
-        cv2.putText(crop_img, str( frequency ) + "Hz", (250,290), cv2.FONT_HERSHEY_COMPLEX, 0.4, (0, 255, 0) )
-        cv2.imshow('image', crop_img)
-        cv2.waitKey(1)
+        # cv2.putText(crop_img, str( frequency ) + "Hz", (250,290), cv2.FONT_HERSHEY_COMPLEX, 0.4, (0, 255, 0) )
+        # cv2.imshow('image', crop_img)
+        # cv2.waitKey(1)
 
     print("\033[93m" + "--***--  OBSTACLE DETECTED / STOP  --***-" + "\033[0m")
     

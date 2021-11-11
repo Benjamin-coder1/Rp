@@ -30,14 +30,14 @@ while p.state != 0 :
 		Events.propagate, Values.propagate = False , False	
 	
 		# Initialization of the Vehicle
-		vehicle = InitialisationVehicle(vehicle, p.vehicleParameters, Events)		
+		vehicle = InitialisationVehicle(vehicle, Events)		
 		
 		# Changing state 
 		p.state = 2
 
 		# start saving values of the vehicle 
-		threadValue = threading.Thread(target=setValue, args=[vehicle])
-		threadValue.start()	
+		# threadValue = threading.Thread(target=setValue, args=[vehicle])
+		# threadValue.start()	
 
 
 	####################################################################################
@@ -53,8 +53,12 @@ while p.state != 0 :
 		###############################
 		
 		# Switching mode
-		if vehicle.mode.name == "MANUAL" : 
-			p.state = 3
+		msg = vehicle.recv_match(type = 'HEARTBEAT', blocking = True)
+		if msg:
+			mode = mavutil.mode_string_v10(msg)
+			if mode == "MANUAL" :
+    				p.state = 3 
+
 
 		# Time of sleeping 
 		time.sleep(p.sleepTime)
@@ -67,27 +71,27 @@ while p.state != 0 :
 		Events.info('Autonomous mode')
 
 	# Start Listening what is comming from the ground station
-	threadStopFromQgc =  threading.Thread(target=StopFromQgc, args=[vehicle])
-	threadStopFromQgc.start()	
+	# threadStopFromQgc =  threading.Thread(target=StopFromQgc, args=[vehicle])
+	# threadStopFromQgc.start()	
 
 	while p.state == 3 :
 		###############################
 		# --   Autonomous control  -- #
 		###############################
 		
-		# Detect obstacle to close to the vehicle 
-		detect_obstacle()
+		# Set speed
+		setSpeed(vehicle, 1e-1)
 
 		# Time of sleeping	
 		time.sleep(p.sleepTime)
 
 	# Stop listening what is comming from ground station 
-	threadStopFromQgc.join()
+	# threadStopFromQgc.join()
 	vehicle.groundspeed = 0
 
 	####################################################################################
 
 # End of the programe 
-threadValue.join()
+# threadValue.join()
 vehicle.close()
 Events.info('Vehicle off')

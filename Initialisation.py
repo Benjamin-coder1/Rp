@@ -4,7 +4,7 @@
 # Fnctions used for the initialization state in the global script
 
 import csv, time, sys, os, logging
-import  dronekit  
+from  pymavlink  import mavutil
 import Parameters as p
 
 
@@ -35,7 +35,8 @@ def getConnexionVehicle(connection_string, logger) :
 	while True : 
 		try : 
 			print('\033[93m' + '>> CONNEXION VEHICLE ... ' + '\033[0;0m')
-			vehicle = dronekit.connect(connection_string, wait_ready=True, baud=57600)
+			vehicle = mavutil.mavlink_connection(connection_string,  baud=57600)
+			vehicle.wait_heartbeat()
 			print('\033[92m' + 'CONNECTED TO THE VEHICLE' + '\033[0;0m')
 			logger.propagate = False
 			logger.info('Connected to the vehicle')
@@ -46,87 +47,55 @@ def getConnexionVehicle(connection_string, logger) :
 			connection_string = str(input('Connecting port : '))
 
 
-def InitialisationVehicle(vehicle, fileName, logger) : 
+def InitialisationVehicle(vehicle, logger) : 
 	# This function allows to initialize the vehicle 
 	# 		vehicle - object dronekit of the vehicle 
 	#		logger - log file 
 
-	## 1- ARMING THE VEHICLE 
-	print('\033[93m'+ '>> Arming the vehicle ... ' +  '\033[0;0m')
-	logger.info('Arming the vehicle')	
-	while not vehicle.armed :
-		vehicle.armed = True
-		time.sleep(1)
-	logger.info('Vehicule armed') 
-	print('\033[92m'  + 'Vehicle armed !' + '\033[0;0m' )
-
-	## 2 - SETTING THE PARAMETERS
-	vehicle = setParameters(vehicle, fileName, logger)
-	time.sleep(10)
-
-	## 3 - SETTING GUIDED THE MODE
+	## 1- SET THE MODE
 	print('\033[93m'+ '>> Setting GUIDED mode ... ' +  '\033[0;0m' )
 	logger.info('Setting GUIDED mode')
-	while not vehicle.mode.name=='GUIDED' :
-		vehicle.mode = dronekit.VehicleMode("GUIDED")
-		time.sleep(1)
-	logger.info('GUIDED mode activated')
-	print('\033[92m'  + 'GUIDED mode activated !' + '\033[0;0m' )
+	vehicle.mav.set_mode_send(vehicle.target_system,
+    	mavutil.mavlink.MAV_MODE_FLAG_CUSTOM_MODE_ENABLED,
+    	0)
+	while True:
+		ack_msg = vehicle.recv_match(type='COMMAND_ACK', blocking=True)
+		ack_msg = ack_msg.to_dict()
+		# Check if command in the same in `set_mode`
+		if ack_msg['command'] != mavutil.mavlink.MAVLINK_MSG_ID_SET_MODE:
+			continue
+		# Print the ACK result !
+		print(mavutil.mavlink.enums['MAV_RESULT'][ack_msg['result']].description)
+		break
+	logger.info('MANUAL mode activated')
+	print('\033[92m'  + 'MANUAL mode activated !' + '\033[0;0m' )
 
-
+	## 2 - ARMING 
+	print('\033[93m'+ '>> Arming the vehicle ... ' +  '\033[0;0m')
+	logger.info('Arming the vehicle')	
+	vehicle.mav.command_long_send(
+		vehicle.target_system,
+		vehicle.target_component,
+		mavutil.mavlink.MAV_CMD_COMPONENT_ARM_DISARM,
+		0,
+		1, 0, 0, 0, 0, 0, 0)
+	vehicle.motors_armed_wait()
+	logger.info('Vehicule armed') 
+	print('\033[92m'  + 'Vehicle armed !' + '\033[0;0m' )
 	return vehicle
 
 
-def setParameters(vehicle, fileName, logger) : 
-	# This function take a vehicle and a CSV list of parameters to initialise
-	# 	vehicle - object dronkit 
-	# 	fileName - file CSV with the shape   "value;name"
-	# 	logger - logger for log file
 
-	# Testing the file 
-	while True : 
-		try : 			
-			file = open(fileName)
-			break
-		except : 
-			print('\033[95m' + 'File of parameters unknow' + '\033[0;0m')
-			logger.error('File of parameters unknow "%s"', fileName)
-			fileName = str(input('CSV file name : '))
-
-	new_value_dic = {}
-	myReader = csv.reader(file, delimiter=';')
-	for row in myReader :		
-		new_value_dic[row[1]] = float(row[0])	
-
-	print('\033[93m' + '>> SETTING PARAMETERS ... ' + '\033[0;0m')
-	up = [0, 0, 0, 0]
-	for name, value in new_value_dic.items() :		
-		if name in vehicle.parameters.keys() : 	
-			attempt = 0
-			while attempt < 10 and vehicle.parameters[name] != value : 
-				vehicle.parameters[name] = value
-				attempt += 1
-				time.sleep(1/2)	
-			
-			if attempt == 0 : 	up[0] += 1  #already set up
-			elif attempt > 0 and attempt < 10 :  up[1] += 1  #set up
-			else :	up[2] += 1  #fail 
-
-			percent = str(round(10000*up[3]/len(new_value_dic))/100) 
-			sys.stdout.write("\r{0}".format(" "*50))
-			sys.stdout.write("\r{0}".format("[ " + str(percent) + "% ] " + name + " : " + str(value)) )
-			sys.stdout.flush()
-			time.sleep(0.1)		
-			logger.info("%s : %f",  str(name), value )
-		up[3] += 1
-
-	print('\033[92m' + 'Initialization completed with : ' + '\033[0;0m')
-	print(str(up[0]) + ' parameters already set up')
-	print(str(up[1]) + ' parameters set up')
-	print(str(up[2]) + ' parameters failed')
-	logging.info( str(up[0]) + ' parameters already set up / ' + str(up[1]) + ' parameters set up / ' + str(up[2]) + ' parameters failed')
-	return vehicle
-
+def setSpeed(vehicle, speed) : 
+	# This function set a speed of the bottom wheels
+	vehicle.mav.command_long_send(
+		vehicle.target_system, vehicle.target_component,
+		mavutil.mavlink.MAV_CMD_DO_SET_SERVO,
+		0,            # first transmission of this command
+		3 + 8,  # servo instance, offset by 8 MAIN outputs
+		2e4*speed, # PWM pulse-width
+		0,0,0,0,0     # unused parameters
+	)
 
 
 def setValue(vehicle): 
@@ -205,6 +174,12 @@ def StopFromQgc(vehicle) :
 	#       connexion_string - link to listen communication 
 	global state 	
 	Events.info('Starting listening to Qgc')
+
+
+	while True : 
+		msg = vehicle.recv_match(type='COMMAND_ACK', blocking=True)
+		print(msg)
+ 			
 
 	# Method for when we receive the text
 	def my_method(self, name, msg):

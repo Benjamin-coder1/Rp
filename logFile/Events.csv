@@ -795,3 +795,374 @@
 10:49:22;INFO;Connexion realsense Camera
 10:49:22;INFO;Camera configurated and connected
 10:49:22;INFO;Launch of the first framset
+10:30:07;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:30:07;INFO;Connextion failed
+10:30:50;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:30:50;INFO;Connextion failed
+10:32:27;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:32:27;INFO;Connextion failed
+10:34:51;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:34:51;INFO;Connextion failed
+10:35:49;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:35:49;INFO;Connected to the vehicle
+10:37:55;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:37:55;INFO;Connextion failed
+10:38:36;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:38:36;INFO;Connected to the vehicle
+10:52:39;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:52:39;INFO;Connextion failed
+10:52:53;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:52:53;INFO;Connextion failed
+10:52:56;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:52:56;INFO;Connextion failed
+10:53:52;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:53:52;INFO;Connextion failed
+10:53:54;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:53:54;INFO;Connextion failed
+10:53:56;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:53:56;INFO;Connextion failed
+10:53:58;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:53:58;INFO;Connextion failed
+10:54:00;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:54:00;INFO;Connextion failed
+10:54:01;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:54:01;INFO;Connextion failed
+10:54:03;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:54:03;INFO;Connextion failed
+10:55:04;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:55:04;INFO;Connextion failed
+10:55:07;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:55:07;INFO;Connextion failed
+10:55:44;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:55:44;INFO;Connected to the vehicle
+10:57:21;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:57:21;INFO;Connected to the vehicle
+10:57:54;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:57:54;INFO;Connected to the vehicle
+10:58:16;INFO;Connexion with the vehicle on /dev/ttyUSB0
+10:58:16;INFO;Connected to the vehicle
+11:25:19;INFO;Connexion with the vehicle on /dev/ttyUSB0
+11:25:19;INFO;Connected to the vehicle
+11:25:59;INFO;Connexion with the vehicle on /dev/ttyUSB0
+11:25:59;INFO;Connected to the vehicle
+13:14:02;INFO;Connexion realsense Camera
+13:14:17;INFO;('No device connected',)
+13:14:26;INFO;Launch of the Program - 07/11/2021
+13:14:26;INFO;Initialisation of the vehicle
+13:14:26;INFO;Connexion with the vehicle on 127.0.0.1:14551
+13:14:47;INFO;Connextion failed
+13:14:52;INFO;Launch of the Program - 07/11/2021
+13:14:52;INFO;Initialisation of the vehicle
+13:14:52;INFO;Connexion with the vehicle on /dev/ttyUSB0
+13:14:53;INFO;Connected to the vehicle
+13:14:53;INFO;Arming the vehicle
+13:16:33;INFO;Launch of the Program - 07/11/2021
+13:16:33;INFO;Initialisation of the vehicle
+13:16:33;INFO;Connexion with the vehicle on /dev/ttyUSB0
+13:16:34;INFO;Connected to the vehicle
+13:16:34;INFO;Arming the vehicle
+13:16:52;INFO;Launch of the Program - 07/11/2021
+13:16:52;INFO;Initialisation of the vehicle
+13:16:52;INFO;Connexion with the vehicle on /dev/ttyUSB0
+13:16:52;INFO;Connected to the vehicle
+13:16:52;INFO;Arming the vehicle
+13:21:23;INFO;Launch of the Program - 07/11/2021
+13:21:23;INFO;Initialisation of the vehicle
+13:21:23;INFO;Connexion with the vehicle on /dev/ttyUSB0
+13:21:24;INFO;Connected to the vehicle
+13:21:55;INFO;Launch of the Program - 07/11/2021
+13:21:55;INFO;Initialisation of the vehicle
+13:21:55;INFO;Connexion with the vehicle on /dev/ttyUSB0
+13:21:55;INFO;Connected to the vehicle
+13:21:56;INFO;Start of saving measurements in log file
+13:21:56;INFO;eph;epv;fix_type;satellites;gps_status;ekf;latitude;longitude;altitude;north;east;down;pitch;yaw;roll;Vx;Vy;Vz;groundspeed;voltage;current;power;last_heartbeat;armed;mode;armable;system_status
+13:21:56;INFO;Groud station control
+13:24:42;INFO;Launch of the Program - 07/11/2021
+13:24:42;INFO;Initialisation of the vehicle
+13:24:42;INFO;Connexion with the vehicle on /dev/ttyUSB0
+13:24:43;INFO;Connected to the vehicle
+13:24:43;INFO;Setting GUIDED mode
+13:24:43;INFO;GUIDED mode activated
+13:24:43;INFO;Arming the vehicle
+13:24:43;INFO;Vehicule armed
+13:24:43;INFO;Start of saving measurements in log file
+13:24:43;INFO;eph;epv;fix_type;satellites;gps_status;ekf;latitude;longitude;altitude;north;east;down;pitch;yaw;roll;Vx;Vy;Vz;groundspeed;voltage;current;power;last_heartbeat;armed;mode;armable;system_status
+13:24:43;INFO;Groud station control
+13:26:48;INFO;Launch of the Program - 07/11/2021
+13:26:48;INFO;Initialisation of the vehicle
+13:26:48;INFO;Connexion with the vehicle on /dev/ttyUSB0
+13:26:48;INFO;Connected to the vehicle
+13:26:48;INFO;Setting GUIDED mode
+13:26:48;INFO;GUIDED mode activated
+13:26:48;INFO;Arming the vehicle
+13:26:48;INFO;Vehicule armed
+13:26:48;INFO;Start of saving measurements in log file
+13:26:48;INFO;Groud station control
+13:26:48;INFO;eph;epv;fix_type;satellites;gps_status;ekf;latitude;longitude;altitude;north;east;down;pitch;yaw;roll;Vx;Vy;Vz;groundspeed;voltage;current;power;last_heartbeat;armed;mode;armable;system_status
+13:34:45;INFO;Launch of the Program - 07/11/2021
+13:34:45;INFO;Initialisation of the vehicle
+13:34:45;INFO;Connexion with the vehicle on /dev/ttyUSB0
+13:34:45;INFO;Connextion failed
+13:34:53;INFO;Launch of the Program - 07/11/2021
+13:34:53;INFO;Initialisation of the vehicle
+13:34:53;INFO;Connexion with the vehicle on /dev/ttyUSB0
+13:34:54;INFO;Connected to the vehicle
+13:34:54;INFO;Setting GUIDED mode
+13:34:54;INFO;MANUAL mode activated
+13:34:54;INFO;Arming the vehicle
+13:34:54;INFO;Vehicule armed
+13:34:54;INFO;Groud station control
+13:42:48;INFO;Launch of the Program - 07/11/2021
+13:42:48;INFO;Initialisation of the vehicle
+13:42:48;INFO;Connexion with the vehicle on /dev/ttyUSB0
+13:42:48;INFO;Connected to the vehicle
+13:42:48;INFO;Setting GUIDED mode
+13:42:49;INFO;MANUAL mode activated
+13:42:49;INFO;Arming the vehicle
+13:42:49;INFO;Vehicule armed
+13:42:49;INFO;Groud station control
+13:42:51;INFO;Autonomous mode
+14:08:52;INFO;Launch of the Program - 07/11/2021
+14:08:52;INFO;Initialisation of the vehicle
+14:08:52;INFO;Connexion with the vehicle on /dev/ttyUSB0
+14:08:52;INFO;Connected to the vehicle
+14:08:52;INFO;Setting GUIDED mode
+14:08:52;INFO;MANUAL mode activated
+14:08:52;INFO;Arming the vehicle
+14:08:53;INFO;Vehicule armed
+14:08:53;INFO;Groud station control
+14:08:55;INFO;Autonomous mode
+14:08:55;INFO;Starting listening to Qgc
+14:36:28;INFO;Launch of the Program - 07/11/2021
+14:36:28;INFO;Initialisation of the vehicle
+14:36:28;INFO;Connexion with the vehicle on /dev/ttyUSB0
+14:36:28;INFO;Connextion failed
+14:38:26;INFO;Launch of the Program - 07/11/2021
+14:38:26;INFO;Initialisation of the vehicle
+14:38:26;INFO;Connexion with the vehicle on /dev/ttyUSB0
+14:38:26;INFO;Connextion failed
+14:38:35;INFO;Launch of the Program - 07/11/2021
+14:38:35;INFO;Initialisation of the vehicle
+14:38:35;INFO;Connexion with the vehicle on /dev/ttyUSB0
+14:38:35;INFO;Connextion failed
+14:38:35;INFO;Connextion failed
+14:38:35;INFO;Connextion failed
+14:38:35;INFO;Connextion failed
+14:38:35;INFO;Connextion failed
+14:38:35;INFO;Connextion failed
+14:38:35;INFO;Connextion failed
+14:38:35;INFO;Connextion failed
+14:38:50;INFO;Launch of the Program - 07/11/2021
+14:38:50;INFO;Initialisation of the vehicle
+14:38:50;INFO;Connexion with the vehicle on /dev/ttyUSB0
+14:38:50;INFO;Connextion failed
+14:38:56;INFO;Launch of the Program - 07/11/2021
+14:38:56;INFO;Initialisation of the vehicle
+14:38:56;INFO;Connexion with the vehicle on /dev/ttyUSB0
+14:38:56;INFO;Connextion failed
+14:39:01;INFO;Launch of the Program - 07/11/2021
+14:39:01;INFO;Initialisation of the vehicle
+14:39:01;INFO;Connexion with the vehicle on /dev/ttyUSB0
+14:39:01;INFO;Connextion failed
+14:39:08;INFO;Launch of the Program - 07/11/2021
+14:39:08;INFO;Initialisation of the vehicle
+14:39:08;INFO;Connexion with the vehicle on /dev/ttyUSB0
+14:39:08;INFO;Connected to the vehicle
+14:39:08;INFO;Setting GUIDED mode
+14:39:08;INFO;MANUAL mode activated
+14:39:08;INFO;Arming the vehicle
+14:39:09;INFO;Vehicule armed
+14:39:09;INFO;Groud station control
+14:39:11;INFO;Autonomous mode
+14:39:11;INFO;Starting listening to Qgc
+14:46:19;INFO;Launch of the Program - 07/11/2021
+14:46:19;INFO;Initialisation of the vehicle
+14:46:19;INFO;Connexion with the vehicle on /dev/ttyUSB0
+14:46:20;INFO;Connected to the vehicle
+14:46:20;INFO;Setting GUIDED mode
+14:46:20;INFO;MANUAL mode activated
+14:46:20;INFO;Arming the vehicle
+14:46:21;INFO;Vehicule armed
+14:46:21;INFO;Groud station control
+14:46:23;INFO;Autonomous mode
+14:46:23;INFO;Starting listening to Qgc
+14:47:08;INFO;Launch of the Program - 07/11/2021
+14:47:08;INFO;Initialisation of the vehicle
+14:47:08;INFO;Connexion with the vehicle on /dev/ttyUSB0
+14:47:08;INFO;Connected to the vehicle
+14:47:08;INFO;Setting GUIDED mode
+14:47:08;INFO;MANUAL mode activated
+14:47:08;INFO;Arming the vehicle
+14:47:09;INFO;Vehicule armed
+14:47:09;INFO;Groud station control
+14:47:11;INFO;Autonomous mode
+14:47:11;INFO;Starting listening to Qgc
+14:52:00;INFO;Launch of the Program - 07/11/2021
+14:52:00;INFO;Initialisation of the vehicle
+14:52:00;INFO;Connexion with the vehicle on /dev/ttyUSB0
+14:52:01;INFO;Connected to the vehicle
+14:52:01;INFO;Setting GUIDED mode
+14:52:01;INFO;MANUAL mode activated
+14:52:01;INFO;Arming the vehicle
+14:52:01;INFO;Vehicule armed
+14:52:01;INFO;Groud station control
+14:52:04;INFO;Autonomous mode
+14:52:04;INFO;Starting listening to Qgc
+14:53:51;INFO;Launch of the Program - 07/11/2021
+14:53:51;INFO;Initialisation of the vehicle
+14:53:51;INFO;Connexion with the vehicle on /dev/ttyUSB0
+14:53:52;INFO;Connected to the vehicle
+14:53:52;INFO;Setting GUIDED mode
+14:53:52;INFO;MANUAL mode activated
+14:53:52;INFO;Arming the vehicle
+14:53:52;INFO;Vehicule armed
+14:53:52;INFO;Groud station control
+14:53:55;INFO;Autonomous mode
+14:53:55;INFO;Starting listening to Qgc
+15:00:40;INFO;Launch of the Program - 07/11/2021
+15:00:40;INFO;Initialisation of the vehicle
+15:00:40;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:00:41;INFO;Connected to the vehicle
+15:00:41;INFO;Setting GUIDED mode
+15:00:41;INFO;MANUAL mode activated
+15:00:41;INFO;Arming the vehicle
+15:00:41;INFO;Vehicule armed
+15:00:41;INFO;Groud station control
+15:00:42;INFO;Autonomous mode
+15:00:42;INFO;Starting listening to Qgc
+15:00:52;INFO;Launch of the Program - 07/11/2021
+15:00:52;INFO;Initialisation of the vehicle
+15:00:52;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:00:53;INFO;Connected to the vehicle
+15:00:53;INFO;Setting GUIDED mode
+15:00:53;INFO;MANUAL mode activated
+15:00:53;INFO;Arming the vehicle
+15:00:53;INFO;Vehicule armed
+15:00:53;INFO;Groud station control
+15:00:55;INFO;Autonomous mode
+15:00:55;INFO;Starting listening to Qgc
+15:01:10;INFO;Launch of the Program - 07/11/2021
+15:01:10;INFO;Initialisation of the vehicle
+15:01:10;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:01:10;INFO;Connected to the vehicle
+15:01:10;INFO;Setting GUIDED mode
+15:01:10;INFO;MANUAL mode activated
+15:01:10;INFO;Arming the vehicle
+15:01:10;INFO;Vehicule armed
+15:01:10;INFO;Groud station control
+15:01:13;INFO;Autonomous mode
+15:01:13;INFO;Starting listening to Qgc
+15:03:10;INFO;Launch of the Program - 07/11/2021
+15:03:10;INFO;Initialisation of the vehicle
+15:03:10;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:03:10;INFO;Connected to the vehicle
+15:03:10;INFO;Setting GUIDED mode
+15:03:10;INFO;MANUAL mode activated
+15:03:10;INFO;Arming the vehicle
+15:03:11;INFO;Vehicule armed
+15:03:11;INFO;Groud station control
+15:03:13;INFO;Autonomous mode
+15:42:08;INFO;Launch of the Program - 07/11/2021
+15:42:08;INFO;Initialisation of the vehicle
+15:42:08;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:42:08;INFO;Connextion failed
+15:42:11;INFO;Launch of the Program - 07/11/2021
+15:42:11;INFO;Initialisation of the vehicle
+15:42:11;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:42:11;INFO;Connextion failed
+15:42:21;INFO;Launch of the Program - 07/11/2021
+15:42:21;INFO;Initialisation of the vehicle
+15:42:21;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:42:21;INFO;Connextion failed
+15:42:29;INFO;Launch of the Program - 07/11/2021
+15:42:29;INFO;Initialisation of the vehicle
+15:42:29;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:42:29;INFO;Connextion failed
+15:42:35;INFO;Launch of the Program - 07/11/2021
+15:42:35;INFO;Initialisation of the vehicle
+15:42:35;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:42:35;INFO;Connextion failed
+15:42:43;INFO;Launch of the Program - 07/11/2021
+15:42:43;INFO;Initialisation of the vehicle
+15:42:43;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:42:43;INFO;Connextion failed
+15:42:53;INFO;Launch of the Program - 07/11/2021
+15:42:53;INFO;Initialisation of the vehicle
+15:42:53;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:42:53;INFO;Connextion failed
+15:43:23;INFO;Launch of the Program - 07/11/2021
+15:43:23;INFO;Initialisation of the vehicle
+15:43:23;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:43:23;INFO;Connextion failed
+15:43:35;INFO;Launch of the Program - 07/11/2021
+15:43:35;INFO;Initialisation of the vehicle
+15:43:35;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:43:35;INFO;Connextion failed
+15:43:35;INFO;Connextion failed
+15:43:41;INFO;Launch of the Program - 07/11/2021
+15:43:41;INFO;Initialisation of the vehicle
+15:43:41;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:43:41;INFO;Connextion failed
+15:44:07;INFO;Launch of the Program - 07/11/2021
+15:44:07;INFO;Initialisation of the vehicle
+15:44:07;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:44:07;INFO;Connextion failed
+15:44:53;INFO;Launch of the Program - 07/11/2021
+15:44:53;INFO;Initialisation of the vehicle
+15:44:53;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:44:53;INFO;Connected to the vehicle
+15:44:53;INFO;Setting GUIDED mode
+15:44:53;INFO;MANUAL mode activated
+15:44:53;INFO;Arming the vehicle
+15:44:54;INFO;Vehicule armed
+15:44:54;INFO;Groud station control
+15:44:56;INFO;Autonomous mode
+15:51:48;INFO;Launch of the Program - 07/11/2021
+15:51:48;INFO;Initialisation of the vehicle
+15:51:48;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:51:48;INFO;Connected to the vehicle
+15:51:48;INFO;Setting GUIDED mode
+15:51:48;INFO;MANUAL mode activated
+15:51:48;INFO;Arming the vehicle
+15:51:49;INFO;Vehicule armed
+15:51:49;INFO;Groud station control
+15:51:51;INFO;Autonomous mode
+15:54:52;INFO;Launch of the Program - 07/11/2021
+15:54:52;INFO;Initialisation of the vehicle
+15:54:52;INFO;Connexion with the vehicle on /dev/ttyUSB0
+15:54:52;INFO;Connected to the vehicle
+15:54:52;INFO;Setting GUIDED mode
+15:54:52;INFO;MANUAL mode activated
+15:54:52;INFO;Arming the vehicle
+15:54:52;INFO;Vehicule armed
+15:54:52;INFO;Groud station control
+15:54:54;INFO;Autonomous mode
+16:13:45;INFO;Launch of the Program - 07/11/2021
+16:13:45;INFO;Initialisation of the vehicle
+16:13:45;INFO;Connexion with the vehicle on /dev/ttyUSB0
+16:13:45;INFO;Connected to the vehicle
+16:13:45;INFO;Setting GUIDED mode
+16:13:45;INFO;MANUAL mode activated
+16:13:45;INFO;Arming the vehicle
+16:13:46;INFO;Vehicule armed
+16:13:46;INFO;Groud station control
+16:13:48;INFO;Autonomous mode
+14:50:54;INFO;Connexion realsense Camera
+14:50:55;INFO;Camera configurated and connected
+14:50:55;INFO;Launch of the first framset
+14:59:48;INFO;Connexion realsense Camera
+15:00:08;INFO;Connexion realsense Camera
+15:00:08;INFO;Camera configurated and connected
+15:00:08;INFO;Launch of the first framset
+15:01:22;INFO;Connexion realsense Camera
+15:01:22;INFO;Camera configurated and connected
+15:01:22;INFO;Launch of the first framset
+15:01:29;INFO;Connexion realsense Camera
+15:01:29;INFO;Camera configurated and connected
+15:01:29;INFO;Launch of the first framset
+15:01:42;INFO;Connexion realsense Camera
+15:01:43;INFO;Camera configurated and connected
+15:01:43;INFO;Launch of the first framset
+15:02:04;INFO;Connexion realsense Camera
+15:02:04;INFO;Camera configurated and connected
+15:02:04;INFO;Launch of the first framset

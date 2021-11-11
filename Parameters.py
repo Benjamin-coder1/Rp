@@ -31,9 +31,10 @@ logFileValue['level'] = logging.INFO
 sensorFrequency = 10
 
 # Connexion string by default 
-connection_string = '127.0.0.1:14551'   # '/dev/ttyUSB0'
+connection_string = '/dev/ttyUSB0'   # '/dev/ttyUSB0'
 
 # Obstacle detection parameters
+Nbcsvtmax = 5   # number of consecutive frames for stopping
 conf = 0.2   # percentage for object detection  
 stop = False   # Stop the vehicle or not 
 distMin = 0.3		# Min distance before an obstacle 

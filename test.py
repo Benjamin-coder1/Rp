@@ -1,164 +1,101 @@
+##########################
+## -- INITIALISATION -- ##
+##########################
+# Fnctions used for the initialization state in the global script
 
-import cv2                                
-import numpy as np                       
-import pyrealsense2 as rs                 # Intel RealSense cross-platform open-source API
-import Parameters as p 
-from Initialisation import * 
-import time as t 
-
-
-   
-## Initialisation 
-Nbcsvt = 0
-frameNb = 0
-
-# Starting camera
-pipe = rs.pipeline()
-align = rs.align(rs.stream.color)
-cfg = rs.config()
-cfg.enable_stream(rs.stream.depth, 640, 480, rs.format.z16, 30)
-cfg.enable_stream(rs.stream.color, 640, 480, rs.format.bgr8, 30)
-pipe.start(cfg)
-Events.info("Camera connected and available ! ")
-cleanFrames()
-
-# configure CNN
-net = cv2.dnn.readNetFromCaffe("./CaffeeModel/SSD_MobileNet.prototxt", "./CaffeeModel/SSD_MobileNet.caffemodel")
-inScaleFactor = 0.007843
-meanVal       = 127.53
-expected = 300
-classNames = ("background", "aeroplane", "bicycle", "bird", "boat",
-            "bottle", "bus", "car", "cat", "chair",
-            "cow", "diningtable", "dog", "horse",
-            "motorbike", "person", "pottedplant",
-            "sheep", "sofa", "train", "tvmonitor")
-    
-################################################## LOOP
-
-frameset = pipe.wait_for_frames()
+import csv, time, sys, os, logging
+from pymavlink import mavutil
+import Parameters as p
 
 
-t1 = t.time() ####
+def setup_logger(logFileInfo):
+    # This function allows to create as many log file as we want 
+	#		logFileInfo - Information about the log file    format / dateFormat/name/level
+	formatter = logging.Formatter(logFileInfo['format'], datefmt=logFileInfo['dateFormat'])
+	handler = logging.FileHandler(logFileInfo['name'])        
+	handler.setFormatter(formatter)
+	logger = logging.getLogger(logFileInfo['name'].split('.')[0])
+	logger.setLevel(logFileInfo['level'])
+	logger.addHandler(handler)
+	return logger
 
-# Get data from camera 
-color_frame = frameset.get_color_frame()
-depth_frame = align.process(frameset).get_depth_frame()
-
-# Get img 
-color = np.asanyarray(color_frame.get_data())    
-
-t2 = t.time() ####
-
-
-# Process the image to localize object 
-height, width = color.shape[:2]        
-aspect = width / height
-resized_image = cv2.resize(color, (round(expected * aspect), expected))
-crop_start = round(expected * (aspect - 1) / 2)
-crop_img = resized_image[0:expected, crop_start:crop_start+expected]
-blob = cv2.dnn.blobFromImage(crop_img, inScaleFactor, (expected, expected), meanVal, False)
-net.setInput(blob, "data")
-detections = net.forward("detection_out")
-
-t3 = t.time() ####
-
-# Prepare computation of point cloud 
-pc = rs.pointcloud()    
-points = pc.calculate(depth_frame)
-w = rs.video_frame(depth_frame).width
-h = rs.video_frame(depth_frame).height
-verts = np.asanyarray(points.get_vertices()).view(np.float32).reshape(h, w, 3)
-i = 0
-
-t4 = t.time() ####
+# File loggers
+Events = setup_logger(p.logFileEvent)
+Values = setup_logger(p.logFileValue)
 
 
-
-# Display results 
-while detections[0,0,i,2] > p.conf :         
-
-    # Get box bounding color 
-    label = detections[0,0,i,1]
-    xmin  = int(expected*detections[0,0,i,3])
-    ymin  = int(expected*detections[0,0,i,4])
-    xmax  = int(expected*detections[0,0,i,5])
-    ymax  = int(expected*detections[0,0,i,6])
-    xmil = int( (xmax - xmin)/2 + xmin)
-    ymil = int( (ymax - ymin)/2 + ymin)
-    
-    # Get box bounding depth 
-    scale = height / expected
-    xminD = int((expected*detections[0,0,i,3] + crop_start)*scale )
-    xmaxD = int((expected*detections[0,0,i,5] + crop_start)*scale )
-    yminD = int((expected*detections[0,0,i,4])*scale )
-    ymaxD = int((expected*detections[0,0,i,6])*scale ) 
-    xmilD = int((xmil + crop_start)*scale )
-    ymilD = int((ymil)*scale )    
-    
-    # Next device
-    i += 1
-    
-    # Work only for bottles
-    if classNames[int(label)] != "bottle" : 
-        continue
-
-    # display position 
-    minDepth = 1e10
-    ks = 4
-
-    t5= t.time() ####
-
-    # Look for min 
-    Tab = verts[yminD:ymaxD, xminD:xmaxD,:]
-    Tab = np.reshape( Tab , (np.prod( np.shape(Tab)[0:2] ) , 3) )[:,2]
-    minDepth = min( Tab[Tab > 0])
-
-    # Look for center 
-    for yD in range(ymilD - ks, ymilD + ks ) : 
-        for xD in range(xmilD - ks, xmilD + ks ) :            
-            if verts[yD, xD, 2] != 0 :
-                milyDi, milxDi = [yD, xD]               
+def getConnexionVehicle(connection_string, logger) : 
+	# This function establishes the connexion with the true vehicle
+	# 	connection_string - identification of the connexion between the computer and the vehicle
+	# 	logger - logger for log file
+	 
+	# Connect to the Vehicle.
+	logger.info('Connexion with the vehicle on %s', connection_string )
+	print("Connecting to vehicle on : %s" % (connection_string,))
+	while True : 
+		try : 
+			print('\033[93m' + '>> CONNEXION VEHICLE ... ' + '\033[0;0m')
+			vehicle = mavutil.mavlink_connection(connection_string, wait_ready=True, baud=57600)
+			print('\033[92m' + 'CONNECTED TO THE VEHICLE' + '\033[0;0m')
+			logger.propagate = False
+			logger.info('Connected to the vehicle')
+			return vehicle
+		except Exception as e : 
+			logger.info('Connextion failed')
+			print('\033[95m' + str(e.args) + '\033[0;0m')
+			connection_string = str(input('Connecting port : '))
 
 
-    t6 = t.time() ####
+def setParameters(vehicle, fileName, logger) : 
+	# This function take a vehicle and a CSV list of parameters to initialise
+	# 	vehicle - object dronkit 
+	# 	fileName - file CSV with the shape   "value;name"
+	# 	logger - logger for log file
 
-    milyD, milxD, _ = verts[ milyDi, milxDi , : ]
-    zD = minDepth
+	# Testing the file 
+	while True : 
+		try : 			
+			file = open(fileName)
+			break
+		except : 
+			print('\033[95m' + 'File of parameters unknow' + '\033[0;0m')
+			logger.error('File of parameters unknow "%s"', fileName)
+			fileName = str(input('CSV file name : '))
 
-    milxi = int((milxDi/scale - crop_start) )
-    milyi = int(milyDi/scale )
+	new_value_dic = {}
+	myReader = csv.reader(file, delimiter=';')
+	for row in myReader :		
+		new_value_dic[row[1]] = float(row[0])	
 
-    
+	print('\033[93m' + '>> SETTING PARAMETERS ... ' + '\033[0;0m')
+	up = [0, 0, 0, 0]
+	for name, value in new_value_dic.items() :		
+		if name in vehicle.parameters.keys() : 	
+			attempt = 0
+			while attempt < 10 and vehicle.parameters[name] != value : 
+				vehicle.parameters[name] = value
+				attempt += 1
+				time.sleep(1/2)	
+			
+			if attempt == 0 : 	up[0] += 1  #already set up
+			elif attempt > 0 and attempt < 10 :  up[1] += 1  #set up
+			else :	up[2] += 1  #fail 
 
-    pos = str(round(milxD,2))+ ' ' + str(round(milyD,2)) + ' ' + str(round(zD,2))
-    cv2.circle(crop_img, ( milxi , milyi ), 3, (255,0,0), -1)
-    cv2.rectangle(crop_img, (xmin, ymin), (xmax, ymax), (0, 0, 0), 2)
-    cv2.putText(crop_img, pos, (xmin - 30, ymin - 10), cv2.FONT_HERSHEY_COMPLEX, 0.4, (0, 0, 0) )
-    if zD < p.distMin : 
-        if Nbcsvt < 5 : 
-            Nbcsvt += 1
-        else :
-            p.stop = True
-  
-       
-t7 = t.time() ####
-
-
-print("Get image : " + str(t2 - t1))
-print("CNN : " + str(t3 - t2))
-print("Nuage point : " + str(t4 - t3))
-print("Get b1 : " + str(t5 - t4))
-print("Get gros boucle : " + str(t6 - t5))
-
-
-print("Temps TOTAL : " + str(t7 - t1))
-# diplay image 
-frameNb += 1
-cv2.imwrite('frames/frame_' + str(frameNb) + '.png', crop_img)
-cv2.imshow('image', crop_img)
-cv2.waitKey(10000)
+			percent = str(round(10000*up[3]/len(new_value_dic))/100) 
+			sys.stdout.write("\r{0}".format(" "*50))
+			sys.stdout.write("\r{0}".format("[ " + str(percent) + "% ] " + name + " : " + str(value)) )
+			sys.stdout.flush()
+			time.sleep(0.1)		
+			logger.info("%s : %f",  str(name), value )
+		up[3] += 1
+	print('\033[92m' + 'Initialization completed with : ' + '\033[0;0m')
+	print(str(up[0]) + ' parameters already set up')
+	print(str(up[1]) + ' parameters set up')
+	print(str(up[2]) + ' parameters failed')
+	logging.info( str(up[0]) + ' parameters already set up / ' + str(up[1]) + ' parameters set up / ' + str(up[2]) + ' parameters failed')
+	return vehicle
 
 
 
-
-
+vehicle = getConnexionVehicle('/dev/ttyUSB0', Events)
+# setParameters(vehicle, 'vehicleParameters.csv', Values)

@@ -1,8 +1,9 @@
-
-import cv2, time, threading, pickle                   
+import sys, cv2, time, threading, pickle                   
 import numpy as np                       
 import pyrealsense2 as rs                 # Intel RealSense cross-platform open-source API
-import Parameters as p 
+sys.path.append("../..")
+import ConfigParameters as p 
+sys.path.append("../../Fonctionality/StateMachine")
 from Initialisation import * 
 
 global verts

@@ -2,9 +2,11 @@
 ## ------ Main ------ ##
 ############################
 
-import time, threading  
-import Parameters as p
+import sys, time, threading  
+sys.path.append("../..")
+import ConfigParameters as p
 from Initialisation import *
+sys.path.append("../ObstacleDetection")
 from ObjectDetection import detect_obstacle
 
 # This script implements the state machine of the vehicle. It is automatically launch at the activation 

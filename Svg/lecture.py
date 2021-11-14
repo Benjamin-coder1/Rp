@@ -4,8 +4,8 @@ import numpy as np
 
 speed = 58
 frequency = 0
-fileColor = open( "svg/color.p" ,"rb")
-fileResult = open( "svg/result.p" ,"rb")
+fileColor = open( "color.p" ,"rb")
+fileResult = open( "result.p" ,"rb")
 
 while True : 
     try : 

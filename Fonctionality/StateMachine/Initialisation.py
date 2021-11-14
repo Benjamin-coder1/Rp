@@ -3,9 +3,10 @@
 ##########################
 # Fnctions used for the initialization state in the global script
 
-import csv, time, sys, os, logging
+import sys, csv, time, sys, os, logging
 from  pymavlink  import mavutil
-import Parameters as p
+sys.path.append("../../")
+import ConfigParameters as p
 
 
 def setup_logger(logFileInfo):

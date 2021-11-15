@@ -1,16 +1,16 @@
-############################
-## ------ Main ------ ##
-############################
-
 import sys, time, threading  
-sys.path.append("../..")
-import ConfigParameters as p
-from Initialisation import *
 sys.path.append("../ObstacleDetection")
-from ObjectDetection import detect_obstacle
+sys.path.append("..")
+import ConfigParameters as p
+import ObjectDetection, Tools, MyVehicle
 
-# This script implements the state machine of the vehicle. It is automatically launch at the activation 
-Events.info('Launch of the Program - %s', time.strftime('%d/%m/%Y'))
+
+
+###################################################################################
+#####							START MACHINE 								#######
+###################################################################################
+
+p.EventLogger.info('Launch of the Program - %s', time.strftime('%d/%m/%Y'))
 
 
 while p.state != 0 : 	
@@ -19,21 +19,18 @@ while p.state != 0 :
 
 	# Display mode 
 	if p.state == 1 : 
-		print('\033[94m' + '\n## ---- Initialisation of the vehicle ---- ##' + '\033[0;0m')
-		Events.info('Initialisation of the vehicle')
+		Tools.disp('\n## ---- Initialisation of the vehicle ---- ##', 3, p.EventLogger)
 
 	while p.state == 1 :
 		##############################
 		# -- Initialisation state -- #
 		##############################		
 
-		# Connexion with the vehicle
-		vehicle = getConnexionVehicle(p.connection_string, Events)	
-		Events.propagate, Values.propagate = False , False	
+		# Create an instance of vehicle 
+		vehicle = MyVehicle.MyVehicle(p.connection_string, p.EventLogger)
+		vehicle.InitialisationVehicle()
+		p.EventLogger.propagate, p.MeasureLogger.propagate = False , False	
 	
-		# Initialization of the Vehicle
-		vehicle = InitialisationVehicle(vehicle, Events)		
-		
 		# Changing state 
 		p.state = 2
 
@@ -46,8 +43,8 @@ while p.state != 0 :
 
 	# Display mode 
 	if p.state == 2 : 
-		print('\033[94m' + '## ---- Groud station control ---- ##' + '\033[0;0m')
-		Events.info('Groud station control')
+		Tools.disp('## ---- Groud station control ---- ##' , 3, p.EventLogger)
+	
 
 	while p.state == 2 : 
 		###############################
@@ -69,9 +66,8 @@ while p.state != 0 :
 
 	# Display mode 
 	if p.state == 3 : 
-		print('\033[94m' + '## ---- Autonomous mode ---- ##' + '\033[0;0m')
-		Events.info('Autonomous mode')
-
+		Tools.disp('## ---- Autonomous mode ---- ##', 3, p.EventLogger)
+	
 	# Start Listening what is comming from the ground station
 	# threadStopFromQgc =  threading.Thread(target=StopFromQgc, args=[vehicle])
 	# threadStopFromQgc.start()	
@@ -96,4 +92,4 @@ while p.state != 0 :
 # End of the programe 
 # threadValue.join()
 vehicle.close()
-Events.info('Vehicle off')
+Tools.disp('## ---- Vehicle OFF ---- ##', 2, p.EventLogger)

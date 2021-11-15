@@ -1174,3 +1174,123 @@
 01:37:54;INFO;Connexion realsense Camera
 01:37:55;INFO;Camera configurated and connected
 01:37:55;INFO;Launch of the first framset
+15:37:33;INFO;Connexion realsense Camera
+15:37:46;INFO;Connexion realsense Camera
+15:37:46;INFO;Camera configurated and connected
+15:37:46;INFO;Launch of the first framset
+19:47:37;INFO;Connexion realsense Camera
+19:47:52;INFO;('No device connected',)
+19:48:11;INFO;Connexion realsense Camera
+19:48:11;INFO;Camera configurated and connected
+19:48:11;INFO;Launch of the first framset
+20:18:07;INFO;Connexion realsense Camera
+20:18:07;INFO;Camera configurated and connected
+20:18:07;INFO;Launch of the first framset
+20:26:15;INFO;Connexion realsense Camera
+20:26:15;INFO;Camera configurated and connected
+20:26:43;INFO;Connexion realsense Camera
+20:26:43;INFO;Camera configurated and connected
+20:26:43;INFO;Launch of the first framset
+20:26:43;INFO;name 'pipe' is not defined
+20:27:08;INFO;Connexion realsense Camera
+20:27:08;INFO;Camera configurated and connected
+20:27:08;INFO;Launch of the first framset
+20:27:08;INFO;name 'pipe' is not defined
+20:30:24;INFO;Connexion realsense Camera
+20:30:24;INFO;Camera configurated and connected
+20:30:25;INFO;Launch of the first framset
+20:30:25;INFO;name 'pipe' is not defined
+20:31:25;INFO;Connexion realsense Camera
+20:31:25;INFO;Camera configurated and connected
+20:31:25;INFO;Launch of the first framset
+20:31:25;INFO;name 'pipe' is not defined
+20:31:58;INFO;Connexion realsense Camera
+20:31:59;INFO;Camera configurated and connected
+20:31:59;INFO;Launch of the first framset
+20:31:59;INFO;name 'pipe' is not defined
+20:32:34;INFO;Connexion realsense Camera
+20:32:34;INFO;Camera configurated and connected
+20:32:34;INFO;Launch of the first framset
+20:32:34;INFO;name 'pipe' is not defined
+20:33:34;INFO;Connexion realsense Camera
+20:33:34;INFO;Camera configurated and connected
+20:33:34;INFO;Launch of the first framset
+20:33:34;INFO;name 'pipe' is not defined
+20:33:49;INFO;Connexion realsense Camera
+20:33:49;INFO;Camera configurated and connected
+20:33:49;INFO;Launch of the first framset
+20:33:49;INFO;'int' object has no attribute 'wait_for_frames'
+20:35:55;INFO;Connexion realsense Camera
+20:35:55;INFO;Camera configurated and connected
+20:35:55;INFO;Launch of the first framset
+20:35:55;INFO;'int' object has no attribute 'wait_for_frames'
+20:36:38;INFO;Connexion realsense Camera
+20:36:38;INFO;Camera configurated and connected
+20:36:39;INFO;Launch of the first framset
+20:36:39;INFO;'int' object has no attribute 'wait_for_frames'
+20:36:39;INFO;'int' object has no attribute 'wait_for_frames'
+20:36:39;INFO;'int' object has no attribute 'wait_for_frames'
+20:36:39;INFO;'int' object has no attribute 'wait_for_frames'
+20:36:39;INFO;'int' object has no attribute 'wait_for_frames'
+20:36:39;INFO;'int' object has no attribute 'wait_for_frames'
+20:37:14;INFO;Connexion realsense Camera
+20:37:14;INFO;Camera configurated and connected
+20:37:15;INFO;Launch of the first framset
+20:37:15;INFO;'int' object has no attribute 'wait_for_frames'
+20:37:15;INFO;'int' object has no attribute 'wait_for_frames'
+20:37:15;INFO;'int' object has no attribute 'wait_for_frames'
+20:37:15;INFO;'int' object has no attribute 'wait_for_frames'
+20:38:28;INFO;Connexion realsense Camera
+20:38:28;INFO;Camera configurated and connected
+20:38:28;INFO;Launch of the first framset
+20:38:46;INFO;Connexion realsense Camera
+20:38:46;INFO;Camera configurated and connected
+20:38:46;INFO;Launch of the first framset
+20:38:54;INFO;Connexion realsense Camera
+20:38:55;INFO;Camera configurated and connected
+20:38:55;INFO;Launch of the first framset
+20:44:29;INFO;Connexion realsense Camera
+20:44:30;INFO;Camera configurated and connected
+20:44:30;INFO;Launch of the first framset
+21:00:56;INFO;Connexion realsense Camera
+21:00:56;INFO;Camera configurated and connected
+21:00:56;INFO;Launch of the first framset
+21:01:50;INFO;Connexion realsense Camera
+21:01:51;INFO;Camera configurated and connected
+21:01:51;INFO;Launch of the first framset
+21:02:22;INFO;Connexion realsense Camera
+21:02:23;INFO;Camera configurated and connected
+21:02:23;INFO;Launch of the first framset
+21:02:47;INFO;Connexion realsense Camera
+21:02:48;INFO;Camera configurated and connected
+21:02:48;INFO;Launch of the first framset
+21:04:33;INFO;Connexion realsense Camera
+21:04:33;INFO;Camera configurated and connected
+21:04:34;INFO;Launch of the first framset
+21:05:17;INFO;Connexion realsense Camera
+21:05:17;INFO;Camera configurated and connected
+21:05:18;INFO;Launch of the first framset
+21:05:28;INFO;Connexion realsense Camera
+21:05:29;INFO;Camera configurated and connected
+21:05:29;INFO;Launch of the first framset
+21:05:43;INFO;Connexion realsense Camera
+21:05:43;INFO;Camera configurated and connected
+21:05:43;INFO;Launch of the first framset
+23:20:44;INFO;Launch of the first framset
+23:20:54;INFO;Launch of the first framset
+23:21:52;INFO;Launch of the Program - 15/11/2021
+23:22:16;INFO;Launch of the Program - 15/11/2021
+23:22:16;INFO;
+## ---- Initialisation of the vehicle ---- ##
+23:22:35;INFO;Launch of the Program - 15/11/2021
+23:22:35;INFO;
+## ---- Initialisation of the vehicle ---- ##
+23:23:07;INFO;Launch of the Program - 15/11/2021
+23:23:07;INFO;
+## ---- Initialisation of the vehicle ---- ##
+23:23:21;INFO;Launch of the Program - 15/11/2021
+23:23:21;INFO;
+## ---- Initialisation of the vehicle ---- ##
+23:23:21;INFO;Connecting to vehicle on : /dev/ttyUSB0
+23:23:21;INFO;>> CONNEXION VEHICLE ... 
+23:23:21;INFO;Connextion failed

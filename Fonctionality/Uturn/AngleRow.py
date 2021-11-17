@@ -94,15 +94,6 @@ while True :
       
 
     plt.legend(listLegend1, listLegend2)
-        
-            
-    
-    
-
-    
-    
-    
-
     fig.canvas.draw_idle()
     plt.pause(0.1)
     
